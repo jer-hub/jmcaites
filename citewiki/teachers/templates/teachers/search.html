@@ -1,0 +1,78 @@
+{% extends 'users/layout.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block body %}
+{% include 'partials/_navbar.html' %}
+
+<div class="container mt-2">
+    <!-- Searchbar -->
+    <form action="{% url 'teachers:search' %}" method='GET' class="mb-4 mt-2">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search name" name="search" required>
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-success">Search</button>
+            <a href="{% url 'teachers:add' %}" class="btn btn-primary" role="button">Add Teacher</a>
+          </div>
+        </div>
+    </form>
+
+    <h1>
+        Search Results
+    </h1>
+    {% if teachers %}
+    <div class="row">
+        {% if teachers %}
+        <div class="table-responsive mt-4">
+            <table class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th class="text-center">Profile Image</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for teacher in teachers %}
+                <tr>
+                  <td>
+                    <a class="text-decoration-none" href="{% url 'teachers:details' teacher.id %}">
+                      {{teacher.fname}}
+                    </a>
+                  </td>
+                  <td>{{teacher.lname}}</td>
+                  <td>{{teacher.email}}</td>
+                  <td class="text-center">
+                    <a class="text-decoration-none" href="{% url 'teachers:details' teacher.id %}">
+                      <img src="/teachers/media/{{teacher.image}}" alt="userimage" width="50" class="rounded-circle">
+                    </a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <ul class="pagination">
+                {% if teachers.has_previous %}
+                    <li class="page-item"><a href="?page=1" class="page-link">&laquo;  First</a></li>
+                    <li class="page-item"><a href="?page={{ teachers.previous_page_number }}" class="page-link"> previous</a></li>
+                {% endif %}
+        
+                {% if teachers.has_next %}
+                    <li class="page-item"><a href="?page={{teachers.next_page_number}}" class="page-link">  next</a></li>
+                    <li class="page-item"><a href="students.paginator.num_pages" class="page-link">&raquo; last</a></li>
+                {% endif %}
+            </ul>
+          </div>
+    </div>
+    {% else %}
+      <h1>
+        Search Results
+      </h1>
+      <p>No query found</p>
+    {% endif %}
+    {% else %}
+    <p>No record.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'users/layout.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block body %}
+{% include 'partials/_navbar.html' %}
+
+<div class="container mt-2">
+    <!-- Searchbar -->
+    <form action="{% url 'students:search' %}" method='GET' class="mb-4 mt-2">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search name" name="search" required>
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-success">Search</button>
+            <a href="{% url 'students:add' %}" class="btn btn-primary" role="button">Add Student</a>
+          </div>
+        </div>
+    </form>
+
+    <h1>
+        Search Results
+    </h1>
+    {% if students %}
+    <div class="row">
+        {% if students %}
+        <div class="table-responsive mt-4">
+            <table class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>yearlevel</th>
+                  <th>Program</th>
+                  <th>Email</th>
+                  <th class="text-center">Profile Image</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for student in students %}
+                <tr>
+                  <td>
+                    <a class="text-decoration-none" href="{% url 'students:details' student.id %}">
+                      {{student.fname}}
+                    </a>
+                  </td>
+                  <td>{{student.lname}}</td>
+                  <td>{{student.yearlevel}}</td>
+                  <td>{{student.student_program.program}}</td>
+                  <td>{{student.email}}</td>
+                  <td class="text-center">
+                    <a class="text-decoration-none" href="{% url 'students:details' student.id %}">
+                      <img src="/students/media/{{student.user_image}}" alt="userimage" width="50" class="rounded-circle">
+                    </a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <ul class="pagination">
+                {% if students.has_previous %}
+                    <li class="page-item"><a href="?page=1" class="page-link">&laquo;  First</a></li>
+                    <li class="page-item"><a href="?page={{ students.previous_page_number }}" class="page-link"> previous</a></li>
+                {% endif %}
+        
+                {% if students.has_next %}
+                    <li class="page-item"><a href="?page={{students.next_page_number}}" class="page-link">  next</a></li>
+                    <li class="page-item"><a href="students.paginator.num_pages" class="page-link">&raquo; last</a></li>
+                {% endif %}
+            </ul>
+          </div>
+    </div>
+    {% else %}
+      <h1>
+        Search Results
+      </h1>
+      <p>No query found</p>
+    {% endif %}
+    {% else %}
+    <p>No record.</p>
+    {% endif %}
+</div>
+{% endblock %}

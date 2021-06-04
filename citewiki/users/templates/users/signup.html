@@ -1,0 +1,30 @@
+{% extends 'users/layout.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+{% include 'partials/_navbar.html' %}
+
+    <div class="d-flex justify-content-center">
+        <div class="row">
+            <div class="col">
+                <h1 class="mt-5">Register</h1>
+                <form class="mt-5" method="POST">
+                    {% csrf_token %}
+                    <label>Username:</label>
+                    <p>{{form.username}}</p>
+
+                    <label>Email:</label>
+                    <p>{{form.email}}</p>
+
+                    <label>Confirm Email:</label>
+                    <p>{{form.email2}}</p>
+
+                    <label>Password:</label>
+                    <p>{{form.password}}</p>
+                    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

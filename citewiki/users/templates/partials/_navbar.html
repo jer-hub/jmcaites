@@ -1,0 +1,43 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border border-danger">
+    <div class="container-fluid ">
+      <a class="navbar-brand text-danger" href="{% url 'users:index' %}"> <img class="ms-4 me-3" src="{% static 'logo/citelogo.png' %}" alt="citelogo" width="40">JMC AITES Wiki</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              AITES
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'students:index' %}">Students</a></li>
+              <li><a class="dropdown-item" href="{% url 'teachers:index' %}">Teachers</a></li>
+            </ul>
+          </li>
+          <li class="nav-item m-auto">
+            <a href="#" class="nav-link text-dark" >Calendar of Events</a>
+          </li>
+        </ul>
+        <div class="d-flex ms-auto pe-3">
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <span class="navbar-text text-dark">Welcome, {{request.user.username}} | </span>
+                    <li class='nav-item'>
+                        <a href="{% url 'users:logout' %}" class="nav-link text-primary">logout</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'users:register' %}" class="nav-link text-primary">Register</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'users:login' %}" class="nav-link text-primary">Login</a>
+                  </li>
+                {% endif %}
+
+            </ul>
+        </div>
+      </div>
+    </div>
+</nav>

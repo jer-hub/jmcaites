@@ -1,0 +1,26 @@
+{% extends 'users/layout.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+{% include 'partials/_navbar.html' %}
+
+<div class="d-flex justify-content-center">
+    <div class="row">
+        <div class="col">
+            <h1 class="mt-5 mb-5">Login</h1>
+            <form action="{% url 'users:login' %}" method="post">
+                {% csrf_token %}
+                <label for="">Username:</label>
+                <p><input type="text" name="username" placeholder="username"></p>
+                <label for="">Password:</label>
+                <p><input type="password" name="password" placeholder="password"></p>
+                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

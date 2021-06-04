@@ -1,0 +1,43 @@
+{% extends 'users/layout.html' %}
+
+{% block title %}Add Teacher{% endblock %}
+
+{% block body %}
+{% include 'partials/_navbar.html' %}
+<div class="container">
+    <h1 class="mt-3 mb-5">Register a Teacher</h1>
+    {% if error_msg %}
+        <p>{{error_msg}}</p>
+    {% endif %}
+    <form action="{% url 'teachers:processadd' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                <label>First Name:</label>
+                <p>{{form.fname}}</p>
+        
+                <label>Last Name:</label>
+                <p>{{form.lname}}</p>
+        
+                <label>Email:</label>
+                <p>{{form.email}}</p>
+        
+                <label>Subjects:</label>
+                <p>{{form.subjects}}</p>
+
+                <a class="btn btn-danger mt-4" href="{% url 'teachers:index' %}" role="button">Back</a>
+                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+            </div>
+            <div class="col">
+        
+                <label>Birth Date:</label>
+                <p><input type="date" name="birthdate" id="id_birthdate" required></p>
+        
+                <label>Display Image:</label>
+                <p>{{form.image}}</p>
+            </div>
+            
+        </div>
+    </form>
+</div>
+{% endblock %}
