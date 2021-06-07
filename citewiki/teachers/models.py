@@ -40,11 +40,11 @@ class Teacher(models.Model):
     image = models.ImageField(upload_to=image_path, default="teacher_pic/default.jpg")
 
     def image_tag(self):
-        return mark_safe('<img src="/teachers/media/%s" width="50" height="50" />'%(self.image))
+        return mark_safe('<img src="/media/%s" width="50" height="50" />'%(self.image))
 
     def __str__(self):
         return f"{self.fname} {self.lname}"
-        
+
 
 class TeacherComment(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='comments')

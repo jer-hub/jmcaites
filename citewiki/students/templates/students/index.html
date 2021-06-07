@@ -46,7 +46,7 @@
                     <td>{{student.email}}</td>
                     <td class="text-center">
                         <a class="text-decoration-none" href="{% url 'students:details' student.id %}">
-                        <img src="media/{{student.user_image}}" alt="userimage" width="50" class="rounded-circle">
+                        <img src="/media/{{student.user_image}}" alt="userimage" width="50" class="rounded-circle">
                         </a>
                     </td>
                 </tr>
@@ -58,7 +58,7 @@
                     <li class="page-item"><a href="?page=1" class="page-link">&laquo;  First</a></li>
                     <li class="page-item"><a href="?page={{ students.previous_page_number }}" class="page-link"> previous</a></li>
                 {% endif %}
-        
+
                 {% if students.has_next %}
                     <li class="page-item"><a href="?page={{students.next_page_number}}" class="page-link">  next</a></li>
                     <li class="page-item"><a href="students.paginator.num_pages" class="page-link">&raquo; last</a></li>
@@ -77,7 +77,7 @@
             <table class="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
-                  
+
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Program</th>
@@ -98,7 +98,7 @@
                   <td>{{student.email}}</td>
                   <td class="text-center">
                     <a class="text-decoration-none" href="{% url 'students:details' student.id %}">
-                      <img src="media/{{student.user_image}}" alt="userimage" width="50" class="rounded-circle">
+                      <img src="/media/{{student.user_image}}" alt="userimage" width="50" class="rounded-circle">
                     </a>
                   </td>
                 </tr>
@@ -110,7 +110,7 @@
                     <li class="page-item"><a href="?pageii=1" class="page-link">&laquo;  First</a></li>
                     <li class="page-item"><a href="?pageii={{ studentsii.previous_page_number }}" class="page-link"> previous</a></li>
                 {% endif %}
-        
+
                 {% if studentsii.has_next %}
                     <li class="page-item"><a href="?pageii={{studentsii.next_page_number}}" class="page-link">  next</a></li>
                     <li class="page-item"><a href="studentsii.paginator.num_pages" class="page-link">&raquo; last</a></li>
@@ -148,7 +148,7 @@
                   <td>{{student.email}}</td>
                   <td class="text-center">
                     <a class="text-decoration-none" href="{% url 'students:details' student.id %}">
-                      <img src="media/{{student.user_image}}" alt="userimage" width="50" class="rounded-circle">
+                      <img src="/media/{{student.user_image}}" alt="userimage" width="50" class="rounded-circle">
                     </a>
                   </td>
                 </tr>
@@ -160,7 +160,7 @@
                     <li class="page-item"><a href="?pageiii=1" class="page-link">&laquo;  First</a></li>
                     <li class="page-item"><a href="?pageiii={{ studentsiii.previous_page_number }}" class="page-link"> previous</a></li>
                 {% endif %}
-        
+
                 {% if studentsiii.has_next %}
                     <li class="page-item"><a href="?pageiii={{studentsiii.next_page_number}}" class="page-link">  next</a></li>
                     <li class="page-item"><a href="studentsiii.paginator.num_pages" class="page-link">&raquo; last</a></li>
@@ -198,7 +198,7 @@
                   <td>{{student.email}}</td>
                   <td class="text-center">
                     <a class="text-decoration-none" href="{% url 'students:details' student.id %}">
-                      <img src="media/{{student.user_image}}" alt="userimage" width="50" class="rounded-circle">
+                      <img src="/media/{{student.user_image}}" alt="userimage" width="50" class="rounded-circle">
                     </a>
                   </td>
                 </tr>
@@ -210,7 +210,7 @@
                     <li class="page-item"><a href="?pageiv=1" class="page-link">&laquo;  First</a></li>
                     <li class="page-item"><a href="?pageiv={{ studentsiv.previous_page_number }}" class="page-link"> previous</a></li>
                 {% endif %}
-        
+
                 {% if studentsiv.has_next %}
                     <li class="page-item"><a href="?pageiv={{studentsiv.next_page_number}}" class="page-link">  next</a></li>
                     <li class="page-item"><a href="studentsiv.paginator.num_pages" class="page-link">&raquo; last</a></li>
@@ -221,5 +221,5 @@
           <p>No record.</p>
           {% endif %}
       </div>
-</div> 
+</div>
 {% endblock %}

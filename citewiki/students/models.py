@@ -45,9 +45,9 @@ class Student(models.Model):
     user_image = models.ImageField(upload_to=image_path, default='profile_pic/default.jpg')
 
     def image_tag(self):
-        return mark_safe('<img src="/students/media/%s" width="50" height="50" />'%(self.user_image))
-    
-    
+        return mark_safe('<img src="/media/%s" width="50" height="50" />'%(self.user_image))
+
+
     def __str__(self):
         return f"{self.email}"
 
