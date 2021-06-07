@@ -46,7 +46,7 @@ class Teacher(models.Model):
         return f"{self.fname} {self.lname}"
         
 
-class Comment(models.Model):
+class TeacherComment(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=100)
     email = models.EmailField(default='null')

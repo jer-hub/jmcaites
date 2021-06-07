@@ -11,7 +11,7 @@
         <p>{{error_msg}}</p>
     {% endif %}
 
-    <form action="{% url 'students:process_edit' student_user.id %}" method="post">
+    <form action="{% url 'students:process_edit' student_user.id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
         <div class="row">
             <div class="col">

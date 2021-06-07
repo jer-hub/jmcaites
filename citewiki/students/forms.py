@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Student, Comment
+from .models import Student, StudentComment
 
 class StudentForm(forms.ModelForm):
     class Meta:
@@ -9,5 +9,5 @@ class StudentForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     class Meta:
-        model = Comment
+        model = StudentComment
         fields = "__all__"

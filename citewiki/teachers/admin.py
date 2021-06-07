@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Teacher, Subject, Comment
+from .models import Teacher, Subject, TeacherComment
 from django.contrib.contenttypes.admin import GenericTabularInline
 
 # Register your models here.
 class CommentInline(admin.TabularInline):
-    model = Comment
+    model = TeacherComment
     extra = 0
 
 
@@ -25,4 +25,4 @@ class CommentAdmin(admin.ModelAdmin):
 
 admin.site.register(Teacher, TeacherAdmin)
 admin.site.register(Subject, SubjectAdmin)
-admin.site.register(Comment, CommentAdmin)
+admin.site.register(TeacherComment, CommentAdmin)

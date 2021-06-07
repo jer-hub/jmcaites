@@ -1,0 +1,94 @@
+{% extends 'users/layout.html' %}
+
+{% block title %}Calendar of Events{% endblock %}
+
+{% block body %}
+{% include 'partials/_navbar.html' %}
+    <div class="container">
+        <h1 class="mt-4">Calendar of Events <a href="{% url 'events:add' %}" class="btn btn-primary ms-3 mb-2" role="button">Add Event</a></h1>
+        {% if jan %}
+            <h1>January</h1>
+            {% for event in jan %}
+                <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+                <p>Description: {{event.info}}</p>
+            {% endfor %}
+        {% endif %}
+        {% if feb %}
+        <h1>February</h1>
+        {% for event in feb %}
+            <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+            <p>Description: {{event.info}}</p>
+        {% endfor %}
+        {% endif %}
+        {% if mar %}
+        <h1>March</h1>
+        {% for event in mar %}
+            <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+            <p>Description: {{event.info}}</p>
+        {% endfor %}
+        {% endif %}
+        {% if apr %}
+        <h1>April</h1>
+        {% for event in apr %}
+            <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+            <p>Description: {{event.info}}</p>
+        {% endfor %}
+        {% endif %}
+        {% if may %}
+        <h1>May</h1>
+        {% for event in may %}
+            <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+            <p>Description: {{event.info}}</p>
+        {% endfor %}
+        {% endif %}
+        {% if jun %}
+        <h1>June</h1>
+        {% for event in jun %}
+            <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+            <p>Description: {{event.info}}</p>
+        {% endfor %}
+        {% endif %}
+        {% if jul %}
+        <h1>July</h1>
+        {% for event in jul %}
+            <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+            <p>Description: {{event.info}}</p>
+        {% endfor %}
+        {% endif %}
+        {% if aug %}
+        <h1>August</h1>
+        {% for event in aug %}
+            <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+            <p>Description: {{event.info}}</p>
+        {% endfor %}
+        {% endif %}
+        {% if sept %}
+        <h1>September</h1>
+        {% for event in sept %}
+            <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+            <p>Description: {{event.info}}</p>
+        {% endfor %}
+        {% endif %}
+        {% if oct %}
+        <h1>October</h1>
+        {% for event in oct %}
+            <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+            <p>Description: {{event.info}}</p>
+        {% endfor %}
+        {% endif %}
+        {% if nov %}
+        <h1>November</h1>
+        {% for event in nov %}
+            <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+            <p>Description: {{event.info}}</p>
+        {% endfor %}
+        {% endif %}
+        {% if mar %}
+        <h1>December</h1>
+        {% for event in dec %}
+            <p><strong>{{event.name}}</strong> - {{event.event_date}}</p>
+            <p>Description: {{event.info}}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

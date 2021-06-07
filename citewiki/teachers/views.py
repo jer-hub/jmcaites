@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 
-from .models import Teacher, Comment
+from .models import Teacher, TeacherComment
 from .forms import TeacherForm
 # Create your views here.
 
@@ -22,8 +22,8 @@ def index(request):
 def details(request, teacher_id):
     try:
         teacher = Teacher.objects.get(pk=teacher_id)
-        comments = Comment.objects.filter(teacher_id=teacher_id)
-        comments_count = Comment.objects.filter(teacher_id=teacher_id).count()
+        comments = TeacherComment.objects.filter(teacher_id=teacher_id)
+        comments_count = TeacherComment.objects.filter(teacher_id=teacher_id).count()
 
     except Teacher.DoesNotExist:
         raise Http404("Profile does not exist")
@@ -155,6 +155,6 @@ def addcomment(request):
     name = request.POST.get('name')
     email = request.POST.get('email')
 
-    comment = Comment.objects.create(teacher_id=teacher_id, body=comment_text, name=name, email=email)
+    comment = TeacherComment.objects.create(teacher_id=teacher_id, body=comment_text, name=name, email=email)
     comment.save()
     return HttpResponseRedirect(reverse('teachers:details', args=(teacher_id,)))

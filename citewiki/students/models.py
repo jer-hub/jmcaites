@@ -51,7 +51,7 @@ class Student(models.Model):
     def __str__(self):
         return f"{self.email}"
 
-class Comment(models.Model):
+class StudentComment(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=100)
     email = models.EmailField(default='null')

@@ -9,7 +9,7 @@
     {% if error_msg %}
         <p>{{error_msg}}</p>
     {% endif %}
-    <form action="{% url 'teachers:processadd' %}" method="post">
+    <form action="{% url 'teachers:processadd' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row">
             <div class="col">

@@ -3,13 +3,15 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import login, logout, authenticate, get_user_model
 
-
+from students.models import StudentComment
+from teachers.models import TeacherComment
 from .forms import UserRegistrationForm
 # Create your views here.
 def index(request):
-    # if not request.user.is_authenticated:
-    #     return HttpResponseRedirect(reverse('login'))
-    return render(request, 'users/index.html')
+    students = StudentComment.objects.all()
+    return render(request, 'users/index.html', {
+        'students' : students,
+    })
 
 def login_view(request):
     if request.method == 'POST':
